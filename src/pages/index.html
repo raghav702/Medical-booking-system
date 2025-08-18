@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dr.Appoinment</title>
+  <link rel="icon" type="image/x-icon" href="../../public/favicon-v2.webp">
+  <link rel="stylesheet" href="../styles/style.css">
+  <script src="https://kit.fontawesome.com/29941e6295.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <div id="header">
+    <div class="container">
+      <nav>
+
+  <img src="../../public/images/logo.jpg" alt="" class="logo">
+
+        <ul id="sidemenu">
+          <li><a href="#header">Home</a></li>
+          <div class="hover">
+
+            <li><a href="#header" class="dropdown">Register</a></li>
+            <div class="dropdown-content">
+              <a href="Dregistration.html">Doctor Register</a>
+              <a href="Pregistration.html">Patient Register</a>
+
+            </div>
+          </div>
+          <li><a href="http://localhost:8501/" target="_blank">AI Assistance</a></li>
+
+          <li><a href="#services">Department</a></li>
+          <!-- <li><a href="#portfolio">Services</a></li> -->
+          <li><a href="#contact">Contact</a></li>
+          <i class="fas fa-times" onclick="closemenu()"></i>
+        </ul>
+        <i class="fas fa-bars" onclick="openmenu()"></i>
+      </nav>
+      <p class="quote">“It is health that is real wealth and not pieces of gold and silver.”</p>
+  <!-- <img  class="plus-sign" src="../../public/images/plus sign image.png" width="70px" fill="#e84949" fill="current-color" alt=""> -->
+      <i class="plus-sign">
+
+        <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="90" height="90" viewBox="0 0 693.000000 721.000000"
+          preserveAspectRatio="xMidYMid meet">
+
+          <g transform="translate(0.000000,721.000000) scale(0.100000,-0.100000)" fill="#e84949" stroke="none">
+            <path d="M3370 6876 c-255 -45 -452 -218 -538 -471 l-27 -80 -3 -875 c-1 -613
+-5 -881 -13 -896 -6 -12 -22 -27 -35 -33 -17 -7 -301 -11 -936 -11 -890 0
+-915 0 -986 -20 -277 -77 -470 -301 -502 -582 -29 -247 67 -477 259 -627 76
+-59 152 -96 249 -120 78 -20 104 -21 1016 -21 745 0 938 -3 941 -13 3 -7 7
+-415 8 -907 4 -1000 -1 -928 78 -1088 31 -65 59 -101 118 -160 160 -159 334
+-220 571 -202 257 20 470 172 572 408 57 131 58 147 58 1067 0 815 1 844 19
+866 l19 24 914 5 c892 6 914 6 974 26 115 40 185 84 279 179 92 91 123 140
+167 264 25 69 36 280 19 361 -55 254 -243 452 -496 519 -78 21 -97 21 -985 24
+ l-905 2 -5 900 c-5 834 -6 905 -23 965 -99 349 -443 560 -807 496z" />
+          </g>
+        </svg>
+
+      </i>
+      <div class="header-text">
+        <div class="items-container">
+
+          <p>Maximizing Efficiency and Accessibility<br>Appointment Allocation using AI
+          </p>
+          <a href="Pregistration.html" class="btn btn2">Book Appointment</a>
+          <a href="Alternate.html" class="btn btn2">Alternate Appointment</a>
+        </div>
+        <div class="image-container">
+
+          <img src="../../public/images/second.jpg" class="doctor-image" alt="">
+        </div>
+
+
+
+
+      </div>
+    </div>
+    <div id="services">
+      <div class="container2">
+        <h1 class="sub-title">Department</h1>
+        <div class="services-list">
+          <div>
+            <svg width="64" height="64" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" clip-rule="evenodd"
+                d="M9 6C7.34315 6 6 7.34315 6 9V39C6 40.6569 7.34315 42 9 42H39C40.6569 42 42 40.6569 42 39V9C42 7.34315 40.6569 6 39 6H9ZM34.2734 19.8684L33.4886 19.4912C36.7449 22.5608 35.9154 27.1867 33.8812 30.7049C32.8211 32.5383 31.3746 34.2052 29.7906 35.4233C28.2226 36.6291 26.4234 37.467 24.6674 37.467C22.9056 37.467 21.149 36.6236 19.6358 35.4225C18.1084 34.2103 16.7345 32.5613 15.7248 30.7725C14.7179 28.9886 14.0387 27.0037 13.9751 25.1126C13.9379 24.0043 14.1138 22.9121 14.5693 21.9235C14.5598 21.9117 14.5496 21.8992 14.5387 21.8861C14.4399 21.767 14.2877 21.6003 14.0847 21.4249C13.6758 21.0713 13.0916 20.7076 12.3418 20.5875C12.0751 20.5447 11.8371 20.396 11.6818 20.175C11.5265 19.954 11.4672 19.6796 11.5174 19.4142C11.8517 17.6468 12.1536 16.5964 12.3873 15.9678C12.5046 15.6524 12.6092 15.4311 12.6993 15.2728C12.7447 15.1931 12.7882 15.1263 12.8298 15.07C12.8508 15.0416 12.8716 15.0155 12.8924 14.9913C12.9028 14.9791 12.9133 14.9675 12.9238 14.9562L12.9396 14.9396L12.9475 14.9315L12.9515 14.9275L12.9535 14.9255C12.9545 14.9246 12.9555 14.9236 13.6567 15.6365C13.9394 14.6773 13.9396 14.6774 13.9399 14.6775L13.942 14.6781L13.9464 14.6794L13.9605 14.6836L14.0088 14.6985C14.0497 14.7112 14.1078 14.7296 14.1805 14.7537C14.326 14.8017 14.5311 14.8723 14.7771 14.965C15.2666 15.1493 15.9298 15.4254 16.6105 15.7898C17.1356 16.0709 17.6941 16.4166 18.197 16.8294L17.1613 15.234C16.8663 14.7796 16.9867 14.173 17.4329 13.8658L20.6418 11.6565C21.0852 11.3513 21.6905 11.4517 22.0116 11.8837L22.5074 12.551V11.5333C22.5074 10.981 22.9552 10.5333 23.5074 10.5333H27.5C28.0523 10.5333 28.5 10.981 28.5 11.5333V12.8793C28.5194 12.8966 28.5393 12.9145 28.5596 12.9331C28.745 13.1028 28.966 13.3277 29.2018 13.6146C30.8869 13.3175 32.9211 13.486 35.3468 14.3828L36.2575 14.7195L35.9478 15.6397C35.7247 16.3026 35.4792 16.8291 35.2557 17.3084L35.2497 17.3214C35.0233 17.8068 34.8197 18.2451 34.6344 18.7959L34.2734 19.8684ZM13.6567 15.6365L12.9555 14.9236C13.2144 14.6689 13.5915 14.5748 13.9399 14.6775L13.6567 15.6365ZM16.1547 19.8604C16.572 19.52 17.0317 19.2777 17.5115 19.1118L17.5959 19.0705C17.4977 18.9298 17.3724 18.7836 17.2169 18.6325C16.8055 18.2324 16.2534 17.8672 15.6666 17.5531C15.1351 17.2686 14.6061 17.0423 14.1859 16.88C14.0478 17.2902 13.869 17.9228 13.6648 18.8783C14.3947 19.1504 14.9721 19.5482 15.3929 19.912C15.4931 19.9986 15.5853 20.0841 15.6694 20.1664C15.7613 20.1065 15.8601 20.0432 15.9653 19.9774C16.0262 19.9393 16.0894 19.9002 16.1547 19.8604ZM18.2733 20.9669C17.9318 21.1395 17.6125 21.3185 17.3281 21.4883C16.3468 22.3696 15.9252 23.5925 15.974 25.0454C16.0238 26.5285 16.5689 28.199 17.4665 29.7894C18.3614 31.3747 19.5723 32.8188 20.8791 33.856C22.2 34.9044 23.527 35.467 24.6674 35.467C25.8136 35.467 27.1901 34.9001 28.5714 33.8379C29.9367 32.788 31.2132 31.3236 32.1498 29.7038C34.0729 26.3778 34.3388 22.9112 31.9854 20.8265C31.7018 20.5753 31.5061 20.4599 31.2445 20.3275C31.1832 20.2964 31.1149 20.263 31.0395 20.2261C30.8684 20.1424 30.6605 20.0407 30.4141 19.908C29.8008 20.2259 29.1052 20.7838 28.4804 21.3697C28.1163 21.7113 27.8044 22.0352 27.5836 22.2737C27.4735 22.3926 27.3868 22.4894 27.3286 22.5556C27.2994 22.5886 27.2774 22.6139 27.2632 22.6304L27.2478 22.6484L27.2446 22.6521L27.1004 22.8224L27.0248 22.9459L25.8624 27.1188L26.2694 28.0594L28.3877 27.8135L28.6183 29.8002L26.7093 30.0218L26.8323 31.8242L24.8369 31.9603L24.6607 29.3779L23.7459 27.2636L23.7911 27.1014L23.1885 27.3739L22.3449 29.5063L20.4851 28.7706L21.052 27.3376L19.2677 26.9172L19.7264 24.9705L22.3056 25.5782L24.4907 24.59L25.0977 22.411C25.0469 22.3861 24.9943 22.3607 24.9399 22.3347C24.2826 22.0202 23.3843 21.6314 22.4056 21.3236C21.4193 21.0134 20.3981 20.8004 19.4824 20.8036C19.0299 20.8052 18.6264 20.859 18.2733 20.9669ZM26.165 20.6334C26.1921 20.598 26.2201 20.5617 26.249 20.5247C26.6457 20.0163 27.2269 19.3483 27.9534 18.7373C29.1811 17.7048 31.0156 16.693 33.1049 17.2079C33.2154 16.9516 33.3257 16.7151 33.431 16.489L33.437 16.4762C33.5228 16.2924 33.6052 16.1153 33.6846 15.9363C30.2774 14.9328 28.1461 15.7382 26.8127 16.8409C25.6797 17.778 25.0266 19.011 24.7076 19.8522C25.1529 20.0816 25.5915 20.318 25.9591 20.5198C26.0304 20.559 26.0992 20.597 26.165 20.6334ZM20.3503 17.5776C20.3575 17.5414 20.3638 17.5146 20.3686 17.4959C20.5493 17.1792 20.5478 16.7775 20.3388 16.4555L19.3687 14.9612L20.9816 13.8508L22.0481 15.2859C22.2402 15.5444 22.545 15.6946 22.8671 15.6893C23.1891 15.6841 23.4889 15.524 23.6724 15.2594L24.3291 14.3125C24.4452 14.1452 24.5074 13.9463 24.5074 13.7426V12.5333H26.5V13.362C26.5 13.6902 26.6609 13.9964 26.9287 14.1827C26.1889 14.5651 25.4993 15.13 24.9205 15.7327C24.0631 16.6255 23.3029 17.7501 22.8367 18.909C21.8254 18.7415 21.2191 18.7393 20.7574 18.7393C20.5024 18.7393 20.3713 18.7373 20.2494 18.7199C20.2697 18.1023 20.3149 17.7568 20.3503 17.5776Z"
+                fill="#333333" />
+            </svg>
+            <h2>Cardiologist</h2>
+            <p>
+              The Cardiology Department specializes in the diagnosis, treatment, and management of heart-related
+              conditions and disorders. Cardiologists are medical professionals with expertise in the cardiovascular
+              system, which includes the heart and blood vessels..</p>
+            <a href="cardio.html" class="learnMore">Know More</a>
+          </div>
+          <div>
+            <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+              <path fill="currentColor"
+                d="M19.924 26.14a2.12 2.12 0 0 0-2.123 2.116c0 1.172.951 2.121 2.123 2.121a2.12 2.12 0 0 0 0-4.237zm16.76 21.565h4.481v2.427h-4.481v-2.427zm0-3.445h4.481v2.424h-4.481V44.26zm0 6.894h4.481v2.427h-4.481v-2.427zm0-10.343h4.481v2.422h-4.481v-2.422z" />
+              <path fill="currentColor"
+                d="M55.491.564H8.707C4.125.564.395 4.294.395 8.878v46.783c0 4.587 3.729 8.316 8.312 8.316H55.49c4.584 0 8.315-3.729 8.315-8.316V8.878c0-4.585-3.731-8.314-8.315-8.314zm-9.646 40.582v16.038h-4.679v-2.581h-4.481v2.581H25.682V51.4h-2.96c-4.114 0-7.446-3.336-7.446-7.456v-5.281h-2.534a1.52 1.52 0 0 1-1.521-1.521c0-.21.038-.415.117-.592l3.937-9.94s.412-4.118.777-5.694c1.643-7.091 9.549-13.53 18.122-13.53c10.44 0 18.894 8.46 18.895 18.901c.001 6.026-2.827 11.401-7.224 14.858z" />
+              <path fill="currentColor"
+                d="M44.806 14.519a4.866 4.866 0 0 0-4.433-2.883c-.394 0-.771.052-1.135.139a4.85 4.85 0 0 0-5.991-.494a4.876 4.876 0 0 0-6.321 1.553c-.115-.007-.229-.017-.353-.017a4.865 4.865 0 0 0-4.751 3.826a4.967 4.967 0 0 0 1.953 9.537c1 0 1.933-.298 2.708-.807a4.84 4.84 0 0 0 2.73.836c1.01 0 1.949-.313 2.732-.845c.549.614 1.302 1.084 2.025 1.364c1.514.647 2.716 2.465 2.716 4.383v5.222h1.751v-5.491c-.015-1.927.697-3.499 2.181-4.366a5.803 5.803 0 0 0 1.077-.815a.46.46 0 0 1 .08-.09c.382-.41.628-.87.753-1.445a3.814 3.814 0 0 0-2.575.114a.512.512 0 1 1-.382-.949a4.853 4.853 0 0 1 3.074-.196a3.871 3.871 0 0 0-3.862-3.857h-.008c-.005 0-.008-.002-.008-.002a4.886 4.886 0 0 1-2.181-.514a3.85 3.85 0 0 0-.933 2.519v.057c.004.016 0 .026 0 .04a3.898 3.898 0 0 0 1.073 2.58h.004c.2.205.194.526-.016.724a.526.526 0 0 1-.358.141a.511.511 0 0 1-.368-.158a4.91 4.91 0 0 1-1.333-2.864a3.808 3.808 0 0 0-.797-.084c-.609 0-1.225.146-1.813.454a.45.45 0 0 1-.234.062a.525.525 0 0 1-.458-.27a.514.514 0 0 1 .213-.695a4.845 4.845 0 0 1 3.089-.511a4.846 4.846 0 0 1 1.061-2.553a4.864 4.864 0 0 1-1.401-1.813a4.897 4.897 0 0 1-3.924.81a4.892 4.892 0 0 1-4.844 4.223h-.062a3.852 3.852 0 0 0-2.701 1.092a.509.509 0 0 1-.718-.011a.5.5 0 0 1 .009-.724a4.879 4.879 0 0 1 3.409-1.383h.062c.349 0 .678-.046.998-.132a3.886 3.886 0 0 0-1.963-1.416a.517.517 0 0 1-.336-.642a.52.52 0 0 1 .652-.334a4.914 4.914 0 0 1 2.613 1.987a3.859 3.859 0 0 0 1.884-2.995a4.942 4.942 0 0 1-1.407-.984a.514.514 0 0 1 .726-.725c.413.413.889.711 1.409.898l.012.003a3.854 3.854 0 0 0 3.843-.711a4.778 4.778 0 0 1-.096-.965c0-.28.227-.514.518-.514c.275 0 .508.234.508.514a3.871 3.871 0 0 0 3.387 3.838a4.885 4.885 0 0 1 1.399-2.914a.516.516 0 0 1 .729 0a.518.518 0 0 1 0 .723a3.842 3.842 0 0 0-1.099 2.255a4.892 4.892 0 0 1 3.762 2.544a3.89 3.89 0 0 0 2.352-1.233a.512.512 0 0 1 .755.693a4.89 4.89 0 0 1-2.711 1.514c.124.425.193.877.193 1.342c0 .007-.006.012-.006.017c.012 1.029-.248 1.885-.716 2.604a4.864 4.864 0 0 1 2.243 2.045h.004a.508.508 0 0 1-.2.698a.488.488 0 0 1-.251.067a.526.526 0 0 1-.447-.258a3.82 3.82 0 0 0-2.05-1.731a5.91 5.91 0 0 1-1.108.81c-1.129.676-1.667 1.772-1.679 3.484v5.492h1.835c.361-2.367 1.548-4.341 3.533-5.497v-.017a4.87 4.87 0 0 0 2.933-4.095a4.844 4.844 0 0 0 1.328-3.334c0-1.11-.375-2.131-.997-2.951a4.865 4.865 0 0 0-3.288-5.924zm-8.122 22.845v2.424h4.481v-1.889c0-.182.019-.358.028-.535h-4.509z" />
+            </svg>
+            <h2>Neurologist</h2>
+            <p>A neurology department is a medical unit within a hospital or healthcare facility that specializes in the
+              diagnosis and treatment of disorders related to the nervous system. Neurologists, who are medical doctors
+              with expertise in neurology, are the primary healthcare professionals in this department.</p>
+            <a href="neuro.html" class="learnMore">Know More</a>
+          </div>
+          <div>
+            <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+              <path fill="currentColor"
+                d="M30.899 50.352a1.759 1.759 0 0 0-2.486 0l-8.278 8.272l-1.03-1.03l11.1-11.085a1.758 1.758 0 0 0-2.486-2.488L16.622 55.108l-1.028-1.028l12.91-12.899a1.759 1.759 0 0 0-2.483-2.488L13.109 51.591l-1.028-1.03l10.132-10.124a1.759 1.759 0 0 0-2.485-2.486L6.693 50.961a958.17 958.17 0 0 1-.019-5.572c0-2.842-3.591-3.263-3.77-3.065C2.729 42.53.938 62.266.938 62.266H21.49l1.145-1.145l-.015-.013l8.281-8.274a1.758 1.758 0 0 0 .001-2.486z" />
+              <path fill="currentColor"
+                d="M40.146 1.963c-10.392 0-19.967 7.796-21.963 16.381c-.447 1.914-.947 6.898-.947 6.898l-4.775 12.034a1.844 1.844 0 0 0 1.702 2.562h1.63l2.911-2.909a3.2 3.2 0 0 1 5.402 1.632l.891-.89a3.2 3.2 0 0 1 4.592 4.454a3.204 3.204 0 0 1 1.637 5.405l-.93.928c.596.121 1.164.41 1.625.871a3.205 3.205 0 0 1 0 4.532l-2.065 2.062v6.345h24.447V42.841c5.322-4.185 8.751-10.691 8.751-17.99c0-12.644-10.251-22.889-22.908-22.889zm-17.269 27.85a2.555 2.555 0 1 1-.005-5.11a2.555 2.555 0 0 1 .005 5.11zm11.956 5.953c.638 0 1.166.523 1.166 1.159c0 .644-.528 1.163-1.166 1.163a1.162 1.162 0 1 1 0-2.322zm-.694 7.269a1.164 1.164 0 1 1 .004-2.328a1.164 1.164 0 0 1-.004 2.328zm2.484 5.006a1.75 1.75 0 0 1-1.598-1.888a1.75 1.75 0 0 1 1.89-1.587c.957.082 1.67.928 1.584 1.883a1.737 1.737 0 0 1-1.876 1.591zm1.676-6.973a1.74 1.74 0 1 1 0-3.48c.955 0 1.733.778 1.733 1.739s-.778 1.741-1.733 1.741zm2.473 3.649c-.646 0-1.17-.518-1.17-1.165a1.167 1.167 0 0 1 2.332 0c0 .646-.519 1.165-1.162 1.165zm2.6-6.761h-.407v-2.077l.402-.004a4.731 4.731 0 0 0 4.715-4.704a4.73 4.73 0 0 0-4.713-4.704l-.404-.002V24.39h.407c3.745 0 6.789 3.04 6.789 6.781s-3.044 6.786-6.789 6.786z" />
+            </svg>
+            <h2>Dermatologist</h2>
+            <p>
+              The Dermatology Department focuses on the diagnosis, treatment, and prevention of skin, hair, and nail
+              disorders. Dermatologists are medical professionals specializing in dermatology, which is the branch of
+              medicine dealing with these conditions</p>
+            <a href="Dermatologist.html" class="learnMore">Know More</a>
+          </div>
+          <div>
+            <?xml version="1.0" standalone="no"?>
+            <!-- <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN"
+   "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd"> -->
+            <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 32.000000 32.000000"
+              preserveAspectRatio="xMidYMid meet">
+  
+              <g transform="translate(0.000000,32.000000) scale(0.100000,-0.100000)" fill="#000000" stroke="none">
+                <path d="M30 300 c0 -14 22 -34 73 -66 39 -25 80 -56 89 -68 17 -20 18 -20 35
+  -3 17 18 17 19 0 30 -11 7 -55 38 -98 70 -44 31 -84 57 -89 57 -6 0 -10 -9
+  -10 -20z" />
+                <path d="M143 265 c41 -30 80 -55 85 -55 17 0 25 -40 12 -55 -16 -20 -49 -19
+  -56 0 -5 13 -136 105 -149 105 -3 0 -5 -17 -5 -39 l0 -38 59 -13 c82 -17 85
+  -20 72 -66 -16 -57 -14 -104 4 -104 11 0 15 13 17 48 l1 47 7 -45 c7 -41 7
+  -39 5 17 -3 61 -2 61 26 65 42 6 53 -12 45 -77 -8 -67 9 -74 18 -9 11 81 7
+  112 -19 150 -30 44 -141 124 -174 124 -18 0 -7 -12 52 -55z m124 -117 c-3 -8
+  -6 -5 -6 6 -1 11 2 17 5 13 3 -3 4 -12 1 -19z" />
+                <path d="M204 104 c3 -9 6 -36 6 -60 0 -36 3 -44 19 -44 14 0 20 10 25 37 12
+  74 9 83 -25 83 -24 0 -30 -3 -25 -16z" />
+              </g>
+            </svg>
+  
+  
+            <h2>Orthopedic</h2>
+            <p>
+              Orthopedic pertains to the medical field dealing with conditions and injuries affecting the bones, joints,
+              muscles, and related structures.
+              It involves diagnosis, treatment, and prevention methods like medication, therapy, and surgery to enhance
+              musculoskeletal health and function.</p>
+            <a href="Orthopedic.html" class="learnMore">Know More</a>
+  
+          </div>
+          <div>
+            <?xml version="1.0" standalone="no"?>
+  
+            <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="64" height="64"
+              viewBox="0 0 512.000000 512.000000" preserveAspectRatio="xMidYMid meet">
+  
+              <g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)" fill="#000000" stroke="none">
+                <path d="M2213 5100 c-39 -23 -46 -36 -67 -125 -62 -264 -61 -555 5 -795 41
+            -151 95 -280 222 -530 232 -455 253 -505 286 -667 48 -231 12 -722 -68 -956
+            -52 -150 -145 -279 -238 -329 -95 -52 -154 -63 -323 -62 -123 1 -206 9 -400
+            38 -135 20 -308 41 -386 48 -416 34 -719 -88 -935 -374 -103 -138 -211 -380
+            -269 -606 -18 -72 -18 -84 -6 -126 21 -71 59 -128 126 -189 117 -109 262 -157
+            497 -164 l153 -5 33 33 c34 34 34 35 39 149 7 137 29 206 89 273 62 71 100 90
+            165 85 68 -6 128 -45 334 -219 292 -246 402 -324 580 -414 199 -100 396 -151
+            618 -162 857 -40 1821 579 2228 1432 148 311 189 527 189 995 0 242 -3 290
+            -23 400 -99 550 -324 1022 -637 1335 -199 200 -424 312 -646 323 -240 11 -442
+            -66 -663 -253 -35 -30 -67 -52 -69 -48 -12 20 -39 127 -53 208 -21 127 -28
+            369 -15 503 12 128 5 162 -44 200 -27 22 -34 22 -359 22 -310 0 -333 -1 -363
+            -20z m1504 -3912 c47 -44 27 -74 -114 -168 -295 -198 -603 -300 -904 -300
+            -152 0 -304 26 -341 58 -26 22 -23 68 6 87 22 15 32 14 127 -6 203 -41 470
+            -12 694 76 116 46 256 121 371 200 60 41 115 75 123 75 8 0 25 -10 38 -22z" />
+                <path d="M838 4064 c-55 -29 -58 -49 -58 -339 l0 -265 -265 0 c-216 0 -271 -3
+            -295 -15 -61 -32 -60 -25 -60 -423 0 -320 2 -366 16 -388 34 -51 52 -54 339
+            -54 l265 0 0 -260 c0 -291 3 -305 64 -334 29 -14 80 -16 379 -16 468 0 436
+            -27 436 362 l1 247 269 3 c253 3 270 4 291 23 48 42 50 63 50 415 0 352 -2
+            373 -50 415 -21 19 -38 20 -291 23 l-269 3 0 247 c0 138 -5 263 -10 284 -6 20
+            -24 48 -41 62 l-31 26 -356 0 c-296 -1 -362 -3 -384 -16z" />
+              </g>
+            </svg>
+  
+            <h2>Gastroenterologist</h2>
+            <p>
+              A gastroenterologist is a doctor who specializes in treating disorders of the digestive system, including
+              the stomach, intestines, liver, and pancreas.
+              They diagnose and manage conditions like acid reflux,
+              irritable bowel syndrome, and liver diseases using procedures like endoscopy and imaging tests.</p>
+            <a href="Gastroenterologist.html" class="learnMore">Know More</a>
+          </div>
+          <div>
+  
+            <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 32.000000 32.000000"
+              preserveAspectRatio="xMidYMid meet">
+  
+              <g transform="translate(0.000000,32.000000) scale(0.100000,-0.100000)" fill="#000000" stroke="none">
+                <path d="M38 303 c-42 -49 -49 -100 -19 -149 24 -39 54 -48 84 -24 19 16 21
+  22 11 48 -10 25 -9 30 2 25 19 -7 18 -72 -2 -94 -35 -39 -5 -109 46 -109 51 0
+  81 70 46 109 -20 22 -21 87 -2 94 11 5 12 0 2 -25 -10 -26 -8 -32 11 -48 30
+  -24 60 -15 84 24 25 41 24 86 -4 127 -24 36 -59 48 -83 29 -17 -15 -18 -52 -2
+  -68 7 -7 8 -12 2 -12 -6 0 -15 5 -22 12 -16 16 -28 2 -13 -16 8 -10 9 -16 1
+  -21 -5 -3 -10 -22 -10 -41 0 -19 -4 -34 -10 -34 -5 0 -10 15 -10 34 0 19 -5
+  38 -10 41 -8 5 -7 11 1 21 15 18 3 32 -13 16 -7 -7 -16 -12 -22 -12 -6 0 -5 5
+  2 12 7 7 12 21 12 33 0 44 -53 61 -82 28z m136 -226 c11 -10 10 -15 -1 -25
+  -18 -18 -46 6 -29 25 14 16 15 16 30 0z" />
+              </g>
+            </svg>
+  
+  
+  
+            <h2>Urologist</h2>
+            <p>
+              A urologist is a doctor specializing in urinary tract and male reproductive system issues. They diagnose and
+              treat conditions like infections, kidney stones, and prostate problems through surgery, medication, and
+              lifestyle advice.</p>
+            <a href="Urologist.html" class="learnMore">Know More</a>
+          </div>
+  
+          <div>
+  
+            <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 32.000000 32.000000"
+              preserveAspectRatio="xMidYMid meet">
+  
+              <g transform="translate(0.000000,32.000000) scale(0.100000,-0.100000)" fill="#000000" stroke="none">
+                <path d="M150 290 c0 -5 5 -10 10 -10 6 0 10 5 10 10 0 6 -4 10 -10 10 -5 0
+  -10 -4 -10 -10z" />
+                <path d="M147 243 c-4 -3 -7 -16 -7 -28 0 -14 6 -21 20 -21 20 0 25 12 14 40
+  -7 17 -16 20 -27 9z" />
+                <path d="M76 201 c-36 -39 -74 -181 -48 -181 25 0 82 23 82 33 0 6 7 1 16 -11
+  19 -28 49 -28 68 0 9 12 16 17 16 11 0 -10 57 -33 83 -33 25 0 -13 142 -49
+  181 -20 23 -54 25 -54 4 0 -8 6 -12 14 -9 8 3 17 1 21 -5 4 -7 -1 -8 -12 -4
+  -16 6 -17 5 -3 -13 11 -15 11 -16 0 -6 -20 17 -32 15 -26 -5 2 -10 7 -27 10
+  -38 5 -18 1 -20 -34 -20 -33 0 -39 2 -35 17 3 10 8 27 11 38 6 23 -5 26 -26 8
+  -11 -10 -11 -9 0 6 14 18 13 19 -3 13 -11 -4 -16 -3 -12 4 4 6 13 8 21 5 8 -3
+  14 1 14 9 0 21 -34 19 -54 -4z m28 -66 c3 -8 3 -22 0 -30 -4 -8 -1 -15 5 -15
+  6 0 11 -4 11 -10 0 -5 -7 -10 -15 -10 -8 0 -14 3 -14 8 3 20 -3 22 -18 5 -10
+  -10 -15 -14 -10 -9 11 15 8 28 -5 20 -7 -4 -8 -3 -4 5 4 6 12 9 17 6 5 -4 9
+  -1 9 5 0 6 5 8 10 5 6 -3 10 -2 10 4 0 5 -8 15 -17 20 -16 9 -16 10 -2 11 9 0
+  19 -7 23 -15z m134 4 c-10 -5 -18 -15 -18 -20 0 -6 5 -7 10 -4 6 3 10 1 10 -5
+  0 -6 4 -9 9 -5 5 3 13 0 17 -6 4 -8 3 -9 -4 -5 -13 8 -16 -5 -4 -20 4 -5 -1
+  -1 -10 9 -16 17 -22 15 -19 -6 0 -4 -6 -7 -14 -7 -8 0 -15 5 -15 10 0 6 5 10
+  11 10 6 0 9 7 5 15 -8 22 4 45 23 45 14 -1 14 -2 -1 -11z m-65 -76 c-7 -2 -19
+  -2 -25 0 -7 3 -2 5 12 5 14 0 19 -2 13 -5z" />
+              </g>
+            </svg>
+  
+  
+            <h2>pulmonologist</h2>
+            <p>
+              A pulmonologist is a doctor who treats lung disorders like asthma and pneumonia.
+              They diagnose using tests like lung function exams and prescribe treatments such as medication and lifestyle
+              changes to improve lung health.
+            </p>
+            <a href="pulmonologist.html" class="learnMore">Know More</a>
+          </div>
+          <div>
+            <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="64" height="64"
+              viewBox="0 0 916.000000 980.000000" preserveAspectRatio="xMidYMid meet">
+  
+              <g transform="translate(0.000000,980.000000) scale(0.100000,-0.100000)" fill="#000000" stroke="none">
+                <path d="M1389 9785 c-135 -19 -343 -97 -491 -182 -306 -176 -596 -497 -768
+  -848 -120 -245 -143 -364 -101 -526 51 -200 187 -449 286 -524 44 -35 55 -26
+  66 49 24 178 273 493 468 590 110 55 179 71 306 70 136 -1 241 -26 363 -88
+  205 -103 352 -289 428 -542 37 -123 40 -307 6 -434 -34 -123 -91 -254 -187
+  -425 -92 -165 -120 -224 -201 -424 -120 -296 -217 -424 -364 -483 -45 -18 -76
+  -22 -165 -22 -162 -1 -182 8 -453 199 -96 68 -160 56 -222 -41 -66 -105 -98
+  -255 -107 -509 -7 -211 0 -244 78 -395 123 -234 315 -428 534 -538 257 -129
+  559 -130 775 -5 89 52 251 215 329 333 122 183 183 324 322 741 144 435 164
+  477 497 1027 203 336 278 500 341 745 98 378 88 748 -29 1098 -174 524 -628
+  956 -1144 1089 -224 57 -392 71 -567 45z" />
+                <path d="M6320 8293 c-124 -6 -364 -36 -500 -63 -860 -171 -1516 -741 -1734
+  -1507 -80 -280 -75 -534 19 -873 42 -155 59 -252 50 -288 -8 -35 -115 -215
+  -267 -452 -142 -221 -235 -402 -246 -480 -17 -117 20 -222 106 -302 99 -93
+  213 -128 420 -128 l135 0 -24 -29 c-13 -16 -43 -52 -66 -81 -84 -102 -89 -193
+  -17 -311 38 -64 41 -87 18 -166 -11 -38 -15 -83 -12 -146 3 -78 8 -101 33
+  -150 l29 -57 -18 -48 c-64 -162 -82 -272 -66 -400 32 -251 290 -462 630 -516
+  52 -8 194 -25 315 -36 303 -29 297 -28 317 -70 30 -62 42 -265 32 -550 -5
+  -140 -9 -321 -9 -401 0 -144 0 -146 28 -182 34 -45 74 -57 190 -57 176 0 1149
+  112 1216 141 23 9 23 13 17 77 -23 226 -194 936 -306 1272 -151 452 -299 691
+  -513 824 -261 163 -648 247 -1295 280 -139 7 -257 17 -261 22 -11 11 -41 217
+  -41 279 0 40 3 47 28 56 55 22 765 1 1072 -32 254 -27 576 -141 774 -273 247
+  -166 543 -573 901 -1241 124 -231 447 -884 516 -1042 46 -106 56 -122 73 -118
+  12 2 53 6 91 10 39 3 243 26 454 51 396 46 656 86 691 104 30 16 51 65 52 119
+  0 83 -41 152 -369 613 -563 792 -727 1087 -779 1406 -12 75 -15 136 -10 267
+  11 323 69 505 266 835 151 255 237 442 319 694 85 263 86 271 86 751 0 472 -1
+  485 -77 712 -142 432 -453 856 -788 1078 -214 141 -500 260 -790 329 -193 46
+  -538 85 -690 79z" />
+                <path d="M1067 8059 c-32 -4 -77 -17 -102 -28 -108 -48 -231 -172 -302 -305
+  -34 -64 -38 -78 -38 -146 0 -87 19 -134 116 -292 125 -202 128 -268 18 -499
+  -28 -61 -54 -129 -56 -153 -10 -88 90 -217 216 -278 51 -26 81 -34 137 -36
+  178 -9 287 87 384 339 24 62 94 215 156 339 61 124 118 245 125 270 18 60 18
+  289 0 360 -35 143 -149 294 -268 358 -119 62 -267 90 -386 71z" />
+                <path d="M1550 4339 c-46 -19 -92 -62 -110 -103 -10 -23 -26 -95 -35 -161 -38
+  -279 -100 -519 -242 -930 -157 -453 -367 -944 -688 -1605 -244 -502 -292 -635
+  -302 -831 -11 -203 29 -322 145 -430 115 -109 212 -146 433 -169 62 -6 382
+  -15 709 -21 327 -5 624 -13 660 -18 36 -6 133 -21 215 -36 335 -58 500 -42
+  673 63 145 88 248 211 298 357 24 68 28 96 28 190 1 175 -48 322 -168 504 -85
+  131 -101 162 -130 264 -61 210 -109 513 -176 1106 -77 675 -109 879 -171 1062
+  -153 457 -410 668 -909 749 -136 22 -192 24 -230 9z" />
+              </g>
+            </svg>
+  
+            <h2>ENT Specialist</h2>
+            <p>
+              An ENT specialist is a doctor who specializes in treating disorders related to the ear, nose, and throat.
+              They diagnose and manage conditions such as sinusitis, hearing loss, tonsillitis, and balance disorders.</p>
+            <a href="ENT.html" class="learnMore">Know More</a>
+          </div>
+          <div>
+  
+            <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="64" height="64"
+              viewBox="0 0 800.000000 800.000000" preserveAspectRatio="xMidYMid meet">
+  
+              <g transform="translate(0.000000,800.000000) scale(0.100000,-0.100000)" fill="#000000" stroke="none">
+                <path d="M3795 7711 c-626 -73 -1098 -460 -1296 -1062 -116 -355 -125 -726
+  -28 -1203 80 -393 186 -663 378 -965 66 -103 107 -180 99 -185 -2 -1 -24 -14
+  -49 -29 -65 -37 -195 -135 -255 -193 -226 -217 -380 -528 -443 -894 -15 -88
+  -31 -235 -31 -291 l0 -45 82 -24 c166 -48 238 -101 297 -219 54 -105 185 -662
+  226 -956 32 -228 47 -366 47 -455 1 -99 -1 -111 -25 -152 -14 -24 -43 -57 -65
+  -72 -44 -30 -132 -66 -163 -66 -11 0 -31 -11 -45 -25 -29 -29 -35 -30 -74 -10
+  -32 17 -55 72 -45 107 20 65 96 93 115 42 9 -24 14 -26 48 -19 60 10 115 42
+  141 80 23 34 24 41 18 153 -6 105 -12 163 -48 437 -6 44 -15 98 -20 120 -5 22
+  -21 99 -35 170 -35 178 -118 505 -140 550 -34 72 -143 120 -308 134 -218 19
+  -390 -25 -451 -115 -23 -33 -94 -303 -151 -570 -44 -206 -94 -593 -94 -729 0
+  -126 14 -159 85 -196 77 -41 100 -43 113 -14 26 56 107 16 119 -58 5 -32 1
+  -41 -30 -72 -41 -41 -64 -44 -92 -12 -11 13 -45 31 -76 40 -70 21 -143 69
+  -174 115 -43 63 -50 125 -37 301 7 86 24 228 37 316 14 88 32 201 40 251 24
+  155 127 559 175 688 25 65 102 154 166 192 24 14 70 32 101 40 109 28 111 29
+  118 92 14 120 47 311 71 412 56 225 118 361 269 591 84 127 102 159 93 159
+  -16 0 -123 -42 -178 -70 -432 -218 -985 -905 -1234 -1531 -80 -202 -192 -686
+  -183 -791 10 -108 102 -242 317 -458 495 -496 1131 -783 1988 -895 472 -61
+  1107 -69 1552 -19 611 68 1228 274 1645 548 311 204 674 563 736 726 102 269
+  -94 854 -488 1459 -273 419 -472 622 -871 890 -118 80 -310 186 -320 176 -5
+  -5 68 -110 143 -205 183 -231 272 -415 352 -725 l18 -70 60 -7 c83 -11 193
+  -66 244 -124 153 -174 144 -455 -20 -629 -170 -180 -482 -180 -647 -2 -88 96
+  -127 216 -120 362 6 113 41 197 114 275 44 47 166 120 200 120 19 0 18 40 -6
+  136 -72 301 -291 644 -588 922 -67 63 -124 122 -127 132 -7 23 3 44 106 216
+  131 222 195 361 276 598 218 647 214 1253 -12 1721 -83 171 -163 284 -300 421
+  -235 235 -518 384 -847 444 -126 23 -362 33 -473 21z m-732 -1045 c41 -8 150
+  -39 243 -69 334 -109 425 -128 651 -134 307 -9 554 40 744 149 58 33 150 73
+  154 66 15 -27 139 -269 175 -343 79 -163 120 -338 120 -520 l0 -70 108 108
+  c59 59 110 107 112 107 10 0 -10 -214 -31 -340 -51 -306 -172 -653 -320 -915
+  -145 -256 -375 -478 -609 -589 -136 -64 -211 -79 -415 -79 -154 0 -192 3 -260
+  22 -337 91 -648 387 -868 827 -120 241 -192 490 -212 742 -8 96 -12 94 106 65
+  38 -9 71 -14 73 -12 2 2 -7 76 -21 164 -31 201 -34 373 -9 465 17 64 69 198
+  120 313 29 65 27 64 139 43z m207 -2656 c22 -11 70 -40 108 -64 149 -96 282
+  -146 446 -166 107 -14 298 -9 401 10 135 25 315 98 423 172 24 17 46 27 49 24
+  9 -8 -66 -130 -143 -231 -37 -49 -142 -184 -234 -300 -192 -241 -274 -352
+  -303 -412 -12 -24 -24 -43 -28 -43 -21 0 -196 217 -394 490 -122 168 -375 529
+  -375 535 0 9 10 6 50 -15z m1698 -2042 l2 -168 145 0 145 0 0 -110 0 -109
+  -147 -3 -148 -3 -3 -167 -2 -168 -130 0 -130 0 0 170 0 170 -150 0 -150 0 0
+  110 0 110 150 0 150 0 0 164 0 165 38 4 c20 2 80 4 132 3 l95 -1 3 -167z" />
+              </g>
+            </svg>
+  
+  
+            <h2>General Physicain</h2>
+            <p>
+              A general physician, also known as a primary care doctor, provides initial and ongoing medical care for
+              patients of all ages. They diagnose and treat a variety of health issues, offer preventive care, and
+              coordinate referrals to specialists when necessary.</p>
+            <a href="General.html" class="learnMore">Know More</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- ---------------about--------------- -->
+
+
+  <!-- ---------------services--------------- -->
+  
+  <!-- ---------------portfolio--------------- -->
+  <div id="portfolio">
+    <div class="container3">
+      <h1 class="sub-title">Services</h1>
+      <div class="work-list">
+        <div class="work">
+          <img src="../../public/images/ctscan.jpg" height="450px" alt="">
+          <div class="layer">
+            <h3>CT-Scan</h3>
+            <p>CT scans are powerful diagnostic tools that play a crucial role in modern medicine, aiding in the early
+              detection and treatment of various medical conditions. However, due to the use of radiation, they are used
+              judiciously and in accordance with clinical necessity. Patients should discuss the risks and benefits of a
+              CT scan with their healthcare provider before undergoing the procedure.
+            </p>
+            <a href="DOCOTR.html">
+              <i class="fas fa-external-link-alt"></i>
+            </a>
+          </div>
+        </div>
+        <div class="work">
+          <img src="../../public/images/first.jpg" height="450px" alt="">
+          <div class="layer">
+            <h3>X-Ray</h3>
+            <p>
+              X-ray, short for "X-radiation," is a commonly used medical imaging technique that uses electromagnetic
+              radiation to create images of the inside of the body. .</p>
+            <a href="DOCOTR.html">
+              <i class="fas fa-external-link-alt"></i>
+            </a>
+          </div>
+        </div>
+        <div class="work">
+          <img src="../../public/images/nine.jpg" height="450px" alt="">
+          <div class="layer">
+            <h3>Full Body Checkup </h3>
+            <p>
+              A full body checkup, also known as a comprehensive health checkup or an annual physical examination, is a
+              comprehensive medical assessment aimed at evaluating a person's overall health and identifying any
+              potential health issues or risk.</p>
+            <a href="DOCOTR.html">
+              <i class="fas fa-external-link-alt"></i>
+            </a>
+          </div>
+        </div>
+        <div class="work">
+          <img src="../../public/images/eight.jpg" height="450px" alt="">
+          <div class="layer">
+            <h3>Dialysis</h3>
+            <p>
+              Dialysis is a treatment for kidney failure, removing waste and excess fluid from the blood when the
+              kidneys can't.
+              It's essential for maintaining electrolyte balance and managing fluid levels in the body.</p>
+            <a href="DOCOTR.html">
+              <i class="fas fa-external-link-alt"></i>
+            </a>
+          </div>
+        </div>
+        <div class="work">
+          <img src="../../public/images/fifth.jpg" height="450px" alt="">
+          <div class="layer">
+            <h3> Electrocardiography </h3>
+            <p>
+              Electrocardiography (ECG) is a diagnostic tool that records the heart's electrical activity through
+              electrodes placed on the skin. It is used to diagnose various heart conditions such as arrhythmias and
+              heart attacks, providing crucial insights into heart health and guiding treatment decisions.</p>
+            <a href="DOCOTR.html">
+              <i class="fas fa-external-link-alt"></i>
+            </a>
+          </div>
+        </div>
+        <div class="work">
+          <img src="../../public/images/fourth.jpg" height="450px" alt="">
+          <div class="layer">
+            <h3> Blood banks </h3>
+            <p>
+              Blood banks store and provide blood for transfusions. They collect blood donations, test them for safety,
+              and distribute blood products to hospitals for patients in need of transfusions due to surgery, trauma, or
+              medical conditions.</p>
+            <a href="DOCOTR.html">
+              <i class="fas fa-external-link-alt"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div id="about">
+    <div class="container4">
+      <div class="row">
+        <div class="about-col-1">
+          <img src="../../public/images/first.jpg" alt="">
+        </div>
+        <div class="about-col-2">
+          <h1 class="sub-title">About</h1>
+          <p>The world perceives us as a low-cost Indian healthcare appointment service provider; what we are engaged in
+            is a
+            passionate journey to establish ourselves as the lowest-cost, high-quality healthcare service provider in
+            the world.
+            Our aim is to develop a digital system that streamlines
+            the appointment scheduling process in hospitals
+            by automating the process of identifying doctor
+            availability and appointment slot allocation. The
+            system will utilize advanced technologies such
+            as RFID, face detection, proximity of Mobile
+            phone, or any other relevant technology to
+            detect the presence of doctors in the hospital.
+            The system will use Artificial Intelligence (AI) to
+            allocate appointment slots based on the
+            doctor's presence and the number of waitlisted
+            patients. This will improve the overall patient
+            experience by reducing the wait time. In
+            conclusion, the proposed digital system will
+            improve the efficiency and convenience of the
+            appointment scheduling process in hospitals;
+            the patients will benefit with reduced waiting
+            time.
+
+            Medwinsix Hospital, located in Knowledge Park-2, Greater Noida, is a renowned
+            Super-Speciality Hospital, which aims at delivering high-quality treatment at a reasonable rate. It is a
+            pioneer in offering specialised services in Cardiology, Neurology, Dermatology and general medical
+            care.
+
+            This renowned hospital is visited by experienced and knowledgeable specialists, such as Dr Prof. K. P.
+            Kushwaha, a prominent Pediatrician in the country, Dr Kiran Kushwaha, a gynaecologist and obstetrician, and
+            more. The hospital has a well-equipped NICU and OT , ECG, EEG, Bera facility, etc.
+            We work on the principle of PATIENT FIRST.
+
+          </p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ---------------contact--------------- -->
+  <div id="contact">
+    <div class="container5">
+      <div class="row1">
+        <div class="contact-left">
+          <h1 class="sub-title">Contact</h1>
+          <p><i class="fas fa-paper-plane"></i>medhospitals@gmail.com</p>
+          <p><i class="fas fa-phone-square"></i>+91 9198564052</p>
+          <div class="social-icons">
+            <a href="https://www.google.com/"><i class="fab fa-facebook"></i></a>
+            <a href="hhttps://www.google.com/1"><i class="fab fa-twitter-square"></i></a>
+            <a href="https://www.google.com/"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.google.com/"><i class="fab fa-linkedin"></i></a>
+
+            <a href="https://surveyheart.com/form/6505412d98264f3dc3caa23b"><button type="submit"
+                class="btn btn2">Contact</button></a>
+            </form>
+            <span id="msg"></span>
+          </div>
+        </div>
+      </div>
+      <div class="copyright">
+        <p>Copyright &copy; MED || All rights reserved. <i class="fas fa-heart"></i></p>
+      </div>
+    </div>
+  </div>
+  <!-- <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbxcyhX4WRk_FRMgShA8EzSlszPPBJDSPKk1NfPtFTOgVlIh77f4_pd7Tbqi5ps2C9ZVMQ/exec'
+        const form = document.forms['submit-to-google-sheet']
+        const msg = document.getElementById('msg');
+
+        form.addEventListener('submit', e => {
+            e.preventDefault()
+            fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+                .then(response => {
+                    msg.innerHTML = 'Message sent successfully'
+                    setTimeout(function () {
+                        msg.innerHTML = "";
+                    }, 5000)
+                    form.reset();
+                })
+                .catch(error => console.error('Error!', error.message))
+        })
+    </script> -->
+  <!-- <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+  <script>
+    let typed = new Typed(".name", {
+      strings: ["Shahil"],
+      typeSpeed: 150,
+      backSpeed: 150,
+      loop: true
+    })
+  </script> -->
+</body>
+<script src="script.js"></script>
+
+</html>
+
+
