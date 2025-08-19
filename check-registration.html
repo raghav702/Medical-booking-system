@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Check Registration</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .data-section {
+            margin: 20px 0;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .success {
+            background-color: #d4edda;
+            border-color: #c3e6cb;
+            color: #155724;
+        }
+        .error {
+            background-color: #f8d7da;
+            border-color: #f5c6cb;
+            color: #721c24;
+        }
+        pre {
+            background-color: #f8f9fa;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Registration Check</h1>
+        
+        <div class="data-section">
+            <h3>Local Storage Data</h3>
+            <button onclick="checkLocalStorage()">Check Local Storage</button>
+            <div id="localStorageData"></div>
+        </div>
+        
+        <div class="data-section">
+            <h3>Supabase Database Check</h3>
+            <button onclick="checkSupabase()">Check Supabase</button>
+            <div id="supabaseData"></div>
+        </div>
+        
+        <div class="data-section">
+            <h3>Navigation</h3>
+            <button onclick="window.location.href='src/pages/patient-dashboard.html'">Go to Patient Dashboard</button>
+            <button onclick="window.location.href='src/pages/login.html'">Go to Login</button>
+            <button onclick="window.location.href='src/pages/index.html'">Go to Home</button>
+        </div>
+    </div>
+
+    <script type="module">
+        import { supabase, database } from './src/scripts/supabase-config.js';
+        
+        window.checkLocalStorage = function() {
+            const dataDiv = document.getElementById('localStorageData');
+            const currentUser = localStorage.getItem('currentUser');
+            
+            if (currentUser) {
+                try {
+                    const userData = JSON.parse(currentUser);
+                    dataDiv.innerHTML = `
+                        <div class="success">
+                            <h4>✅ User data found in local storage:</h4>
+                            <pre>${JSON.stringify(userData, null, 2)}</pre>
+                        </div>
+                    `;
+                } catch (e) {
+                    dataDiv.innerHTML = `
+                        <div class="error">
+                            <h4>❌ Error parsing user data:</h4>
+                            <p>${e.message}</p>
+                        </div>
+                    `;
+                }
+            } else {
+                dataDiv.innerHTML = `
+                    <div class="error">
+                        <h4>❌ No user data found in local storage</h4>
+                        <p>You may need to register or login first.</p>
+                    </div>
+                `;
+            }
+        };
+        
+        window.checkSupabase = async function() {
+            const dataDiv = document.getElementById('supabaseData');
+            dataDiv.innerHTML = '<p>Checking Supabase database...</p>';
+            
+            try {
+                // Get current user from Supabase auth
+                const { data: { user }, error: authError } = await supabase.auth.getUser();
+                
+                if (authError) {
+                    dataDiv.innerHTML = `
+                        <div class="error">
+                            <h4>❌ Authentication Error:</h4>
+                            <p>${authError.message}</p>
+                        </div>
+                    `;
+                    return;
+                }
+                
+                if (!user) {
+                    dataDiv.innerHTML = `
+                        <div class="error">
+                            <h4>❌ No authenticated user found</h4>
+                            <p>Please login first.</p>
+                        </div>
+                    `;
+                    return;
+                }
+                
+                // Try to get patient data
+                const { data: patient, error: patientError } = await database.getPatientByUserId(user.id);
+                
+                if (patientError) {
+                    dataDiv.innerHTML = `
+                        <div class="error">
+                            <h4>❌ Error fetching patient data:</h4>
+                            <p>${patientError.message}</p>
+                        </div>
+                    `;
+                    return;
+                }
+                
+                if (patient) {
+                    dataDiv.innerHTML = `
+                        <div class="success">
+                            <h4>✅ Patient data found in Supabase:</h4>
+                            <pre>${JSON.stringify(patient, null, 2)}</pre>
+                        </div>
+                    `;
+                } else {
+                    dataDiv.innerHTML = `
+                        <div class="error">
+                            <h4>❌ No patient data found for user</h4>
+                            <p>User ID: ${user.id}</p>
+                        </div>
+                    `;
+                }
+                
+            } catch (error) {
+                dataDiv.innerHTML = `
+                    <div class="error">
+                        <h4>❌ Connection Error:</h4>
+                        <p>${error.message}</p>
+                    </div>
+                `;
+            }
+        };
+        
+        // Auto-check local storage on page load
+        window.addEventListener('load', function() {
+            checkLocalStorage();
+        });
+    </script>
+</body>
+</html>

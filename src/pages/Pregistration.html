@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Doctor's Registration</title>
+    <title>Patient Registration</title>
     <style>
         * {
             margin: 0;
@@ -13,12 +13,9 @@
         }
 
         .contact-form-container {
-            /* position: relative;
-            top: 10%; */
             z-index: -1;
             width: 100%;
             background-color: rgb(231, 231, 231);
-
         }
 
         .btn-pink {
@@ -30,13 +27,22 @@
             justify-content: center;
             align-items: center;
             border-radius: .5rem;
+            color: white;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.4rem;
+        }
+
+        .btn-pink:hover {
+            background-color: #d13a3a;
+            scale: 0.9;
         }
 
         .contact-heading {
             font-size: 5em;
             color: #e84949;
             padding-top: 2rem;
-
         }
 
         .color {
@@ -45,11 +51,9 @@
 
         .conatctus-fomr-container {
             margin-top: 25px;
-
             display: flex;
             align-items: center;
             justify-content: center;
-            /* flex-direction: column; */
         }
 
         .form {
@@ -76,44 +80,8 @@
             margin: 17px;
         }
 
-        .fomrfiled-textarea {
-            height: auto;
-            padding-top: 1rem;
-
-        }
-
-        .submit-btn {
-            border: none;
-            font-size: 1.4rem;
-            margin: 1rem 0;
-        }
-
-        #submit-btn:hover {
-            scale: 0.9;
-        }
-
-        .submiot-icon {
-            padding: 0 1rem;
-            font-size: 1.5rem;
-        }
-
-        .checkbox1 {
-            width: 100%;
-            height: 42px;
-            padding: 0 2rem;
-            font-size: 18px;
-            font-weight: 700;
-        }
-
-        /* drop down menu styling */
-        .dropbtn {
-            background-color: #343d68aa;
-            color: balck;
-            padding: 16px;
-            font-size: 16px;
-            border: none;
-            border-radius: .5rem;
-            width: 100%;
+        .formfield:focus {
+            outline: 2px solid #e84949;
         }
 
         .dropdown {
@@ -125,14 +93,25 @@
             padding: 0 2rem;
         }
 
+        .dropbtn {
+            background-color: #343d68aa;
+            color: white;
+            padding: 16px;
+            font-size: 16px;
+            border: none;
+            border-radius: .5rem;
+            width: 100%;
+            cursor: pointer;
+        }
+
         .dropdown-content {
             display: none;
             position: absolute;
             background-color: #f1f1f1;
-            /*min-width: 160px;*/
             max-width: 100%;
             box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
             z-index: 1;
+            width: 94%;
         }
 
         .dropdown-content a {
@@ -140,6 +119,7 @@
             padding: 12px 16px;
             text-decoration: none;
             display: block;
+            cursor: pointer;
         }
 
         .dropdown-content a:hover {
@@ -148,7 +128,6 @@
 
         .dropdown:hover .dropdown-content {
             display: block;
-            width: 94%;
         }
 
         .dropdown:hover .dropbtn {
@@ -165,94 +144,298 @@
         .text {
             font-size: 18px;
         }
+
+        .error {
+            color: #e84949;
+            font-size: 14px;
+            margin-left: 17px;
+            display: none;
+        }
+
+        .success-message {
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px;
+            margin: 20px;
+            border-radius: 5px;
+            text-align: center;
+            display: none;
+        }
+
+        .back-btn {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background-color: #e84949;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        .back-btn:hover {
+            background-color: #d13a3a;
+        }
     </style>
 </head>
 
 <body>
+    <a href="index.html" class="back-btn">← Back to Home</a>
+    
     <div class="contact-form-container" id="contactme">
         <div class="container">
-            
             <h1 class="contact-heading">Book Your <span class="color"> Appointment</span></h1>
 
+            <div class="success-message" id="successMessage">
+                <h3>Registration Successful!</h3>
+                <p>Your appointment has been booked. We will contact you soon.</p>
+            </div>
+
             <div class="conatctus-fomr-container">
-                <form class="form" action="#" method="POST">
+                <form class="form" id="patientForm" onsubmit="handleSubmit(event)">
                     <div class="formfield-container">
                         <div class="formfield1">
+                            <input type="text" class="formfield" name="name" id="name" placeholder="Enter your Name" required />
+                            <div class="error" id="nameError">Please enter a valid name</div>
 
-                            <input type="text" class="formfield" name="name" id="" placeholder="Enter your Name" />
-                            <input type="text" class="formfield" name="name" id=""
-                                placeholder="Enter your phone number (Unique ID)" />
+                            <input type="tel" class="formfield" name="phone" id="phone" placeholder="Enter your phone number (Unique ID)" required />
+                            <div class="error" id="phoneError">Please enter a valid phone number</div>
 
-                            <input type="email" class="formfield" name="email" placeholder="Enter your Email Address" />
-                            <input type="email" class="formfield" name="email" placeholder="Enter your Age" />
-                            <input type="email" class="formfield" name="email" placeholder="Enter your Sex" />
-                            <input type="email" class="formfield" name="email"
-                                placeholder="Enter your City or Address" />
-                            <input type="email" class="formfield" name="email" placeholder="Enter Department" />
-                            <input type="email" class="formfield" name="email"
-                                placeholder="Preffered Date of Appointment" />
+                            <input type="email" class="formfield" name="email" id="email" placeholder="Enter your Email Address" required />
+                            <div class="error" id="emailError">Please enter a valid email address</div>
 
+                            <input type="number" class="formfield" name="age" id="age" placeholder="Enter your Age" min="1" max="120" required />
+                            <div class="error" id="ageError">Please enter a valid age (1-120)</div>
 
+                            <select class="formfield" name="sex" id="sex" required>
+                                <option value="">Select your Sex</option>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                                <option value="other">Other</option>
+                            </select>
 
+                            <input type="text" class="formfield" name="address" id="address" placeholder="Enter your City or Address" required />
+                            <div class="error" id="addressError">Please enter your address</div>
 
+                            <select class="formfield" name="department" id="department" required>
+                                <option value="">Select Department</option>
+                                <option value="cardiology">Cardiology</option>
+                                <option value="neurology">Neurology</option>
+                                <option value="dermatology">Dermatology</option>
+                                <option value="orthopedics">Orthopedics</option>
+                                <option value="gastroenterology">Gastroenterology</option>
+                                <option value="urology">Urology</option>
+                                <option value="pulmonology">Pulmonology</option>
+                                <option value="ent">ENT</option>
+                                <option value="general">General Physician</option>
+                            </select>
 
-                            <div class="dropdown ">
-                                <button class="dropbtn text">Preffered Time slot</button>
-                                <div class="dropdown-content">
-                                    <a href="#"> </a>
-                                    <a href="#">9:00am - 11:00am </a>
-                                    <a href="#">11:00am - 1:00pm</a>
-                                    <a href="#">2:00pm - 4:00pm</a>
+                            <input type="date" class="formfield" name="appointmentDate" id="appointmentDate" required />
+                            <div class="error" id="dateError">Please select a valid date</div>
 
+                            <select class="formfield" name="timeSlot" id="timeSlot" required>
+                                <option value="">Select Preferred Time Slot</option>
+                                <option value="9:00am-11:00am">9:00am - 11:00am</option>
+                                <option value="11:00am-1:00pm">11:00am - 1:00pm</option>
+                                <option value="2:00pm-4:00pm">2:00pm - 4:00pm</option>
+                            </select>
 
-                                </div>
-                            </div>
+                            <input type="password" class="formfield" name="password" id="password" placeholder="Enter Password" required />
+                            <div class="error" id="passwordError">Password must be at least 6 characters</div>
 
-
-
+                            <input type="password" class="formfield" name="confirmPassword" id="confirmPassword" placeholder="Confirm Password" required />
+                            <div class="error" id="confirmPasswordError">Passwords do not match</div>
                         </div>
                         <div class="button">
-                            <!-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" id="icons">
-                                <path
-                                    d="M498.1 5.6c10.1 7 15.4 19.1 13.5 31.2l-64 416c-1.5 9.7-7.4 18.2-16 23s-18.9 5.4-28 1.6L284 427.7l-68.5 74.1c-8.9 9.7-22.9 12.9-35.2 8.1S160 493.2 160 480V396.4c0-4 1.5-7.8 4.2-10.7L331.8 202.8c5.8-6.3 5.6-16-.4-22s-15.7-6.4-22-.7L106 360.8 17.7 316.6C7.1 311.3 .3 300.7 0 288.9s5.9-22.8 16.1-28.7l448-256c10.7-6.1 23.9-5.5 34 1.4z" />
-                            </svg> -->
-                            <button type="submit" class="btn-pink  " id="submit-btn"> Submit form
-                                <a href="index.html"></a> <i class="submiot-icon  fa-solid fa-paper-plane"></i></button>
+                            <button type="submit" class="btn-pink" id="submit-btn">
+                                Submit Form <i class="fa-solid fa-paper-plane"></i>
+                            </button>
                         </div>
-
                     </div>
                 </form>
             </div>
-            
         </div>
     </div>
-    <script src="script.js"></script>
+
+    <script type="module">
+        import { auth, database } from '../scripts/supabase-config.js';
+
+        // Set minimum date to today
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById('appointmentDate').min = today;
+
+        function validateForm() {
+            let isValid = true;
+            
+            // Reset all error messages
+            document.querySelectorAll('.error').forEach(error => error.style.display = 'none');
+            
+            // Validate name
+            const name = document.getElementById('name').value.trim();
+            if (name.length < 2) {
+                document.getElementById('nameError').style.display = 'block';
+                isValid = false;
+            }
+            
+            // Validate phone
+            const phone = document.getElementById('phone').value.trim();
+            if (!/^\d{10}$/.test(phone)) {
+                document.getElementById('phoneError').style.display = 'block';
+                isValid = false;
+            }
+            
+            // Validate email
+            const email = document.getElementById('email').value.trim();
+            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                document.getElementById('emailError').style.display = 'block';
+                isValid = false;
+            }
+            
+            // Validate age
+            const age = document.getElementById('age').value;
+            if (age < 1 || age > 120) {
+                document.getElementById('ageError').style.display = 'block';
+                isValid = false;
+            }
+            
+            // Validate address
+            const address = document.getElementById('address').value.trim();
+            if (address.length < 5) {
+                document.getElementById('addressError').style.display = 'block';
+                isValid = false;
+            }
+            
+            // Validate date
+            const appointmentDate = document.getElementById('appointmentDate').value;
+            if (!appointmentDate) {
+                document.getElementById('dateError').style.display = 'block';
+                isValid = false;
+            }
+            
+            // Validate password
+            const password = document.getElementById('password').value;
+            if (password.length < 6) {
+                document.getElementById('passwordError').style.display = 'block';
+                isValid = false;
+            }
+            
+            // Validate confirm password
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            if (password !== confirmPassword) {
+                document.getElementById('confirmPasswordError').style.display = 'block';
+                isValid = false;
+            }
+            
+            return isValid;
+        }
+
+                    async function handleSubmit(event) {
+                event.preventDefault();
+
+                if (validateForm()) {
+                    try {
+                        // Show loading state
+                        const submitBtn = document.getElementById('submit-btn');
+                        submitBtn.disabled = true;
+                        submitBtn.innerHTML = 'Creating Account... <i class="fa-solid fa-spinner fa-spin"></i>';
+
+                        // Collect form data
+                        const formData = new FormData(event.target);
+                        const data = Object.fromEntries(formData);
+
+                        // Create user account in Supabase
+                        const { data: authData, error: authError } = await auth.signUp(
+                            data.email, 
+                            data.password, 
+                            'patient'
+                        );
+
+                        if (authError) {
+                            throw new Error(authError.message);
+                        }
+
+                        // Create patient profile
+                        const patientData = {
+                            user_id: authData.user.id,
+                            name: data.name,
+                            phone: data.phone,
+                            age: parseInt(data.age),
+                            sex: data.sex,
+                            address: data.address
+                        };
+
+                        const { error: patientError } = await database.createPatient(patientData);
+                        if (patientError) {
+                            throw new Error(patientError.message);
+                        }
+
+                        // Get the created patient record to get the patient ID
+                        const { data: createdPatient, error: fetchError } = await database.getPatientByUserId(authData.user.id);
+                        if (fetchError) {
+                            throw new Error('Failed to fetch created patient: ' + fetchError.message);
+                        }
+
+                        // Create appointment
+                        const appointmentData = {
+                            patient_id: createdPatient.id,
+                            department: data.department,
+                            appointment_date: data.appointmentDate,
+                            time_slot: data.timeSlot,
+                            status: 'pending'
+                        };
+
+                        const { error: appointmentError } = await database.createAppointment(appointmentData);
+                        if (appointmentError) {
+                            throw new Error(appointmentError.message);
+                        }
+
+                        // Show success message
+                        document.getElementById('successMessage').style.display = 'block';
+                        document.getElementById('patientForm').style.display = 'none';
+
+                        // Redirect to login page after 3 seconds
+                        setTimeout(() => {
+                            window.location.href = 'login.html';
+                        }, 3000);
+
+                    } catch (error) {
+                        console.error('Registration error:', error);
+                        alert('Registration failed: ' + error.message);
+                        
+                        // Reset button state
+                        const submitBtn = document.getElementById('submit-btn');
+                        submitBtn.disabled = false;
+                        submitBtn.innerHTML = 'Submit Form <i class="fa-solid fa-paper-plane"></i>';
+                    }
+                }
+            }
+
+        // Real-time validation
+        document.getElementById('name').addEventListener('blur', function() {
+            if (this.value.trim().length < 2) {
+                document.getElementById('nameError').style.display = 'block';
+            } else {
+                document.getElementById('nameError').style.display = 'none';
+            }
+        });
+
+        document.getElementById('phone').addEventListener('blur', function() {
+            if (!/^\d{10}$/.test(this.value.trim())) {
+                document.getElementById('phoneError').style.display = 'block';
+            } else {
+                document.getElementById('phoneError').style.display = 'none';
+            }
+        });
+
+        document.getElementById('email').addEventListener('blur', function() {
+            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(this.value.trim())) {
+                document.getElementById('emailError').style.display = 'block';
+            } else {
+                document.getElementById('emailError').style.display = 'none';
+            }
+        });
+    </script>
 </body>
 
 </html>
-<?php
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $name = $_POST["name"];
-    $phoneNumber = $_POST["phone"];
-    $email = $_POST["email"];
-    $age = $_POST["age"];
-    $sex = $_POST["sex"];
-    $address = $_POST["address"];
-    $department = $_POST["department"];
-    $appointmentDate = $_POST["appointment_date"];
-    $preferredTimeSlot = $_POST["preferred_time_slot"];
-
-    // Process the form data further as needed
-
-    // For demonstration purpose, echoing back the values
-    echo "Name: $name <br>";
-    echo "Phone Number: $phoneNumber <br>";
-    echo "Email: $email <br>";
-    echo "Age: $age <br>";
-    echo "Sex: $sex <br>";
-    echo "Address: $address <br>";
-    echo "Department: $department <br>";
-    echo "Appointment Date: $appointmentDate <br>";
-    echo "Preferred Time Slot: $preferredTimeSlot <br>";
-}
-?>

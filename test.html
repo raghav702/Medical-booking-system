@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Page</title>
+</head>
+<body>
+    <h1>Supabase Connection Test</h1>
+    <div id="status">Testing connection...</div>
+    
+    <script type="module">
+        import { supabase } from './src/scripts/supabase-config.js';
+        
+        async function testConnection() {
+            try {
+                const statusDiv = document.getElementById('status');
+                
+                // Test basic connection
+                const { data, error } = await supabase.from('doctors').select('count').limit(1);
+                
+                if (error) {
+                    statusDiv.innerHTML = `Error: ${error.message}`;
+                    statusDiv.style.color = 'red';
+                } else {
+                    statusDiv.innerHTML = 'Supabase connection successful!';
+                    statusDiv.style.color = 'green';
+                }
+            } catch (err) {
+                document.getElementById('status').innerHTML = `Connection failed: ${err.message}`;
+                document.getElementById('status').style.color = 'red';
+            }
+        }
+        
+        testConnection();
+    </script>
+</body>
+</html>

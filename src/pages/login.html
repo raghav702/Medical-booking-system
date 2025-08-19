@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical Booking System - Login</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .login-container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        .logo {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            border-radius: 50%;
+            background: #e84949;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 28px;
+        }
+
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 16px;
+        }
+
+        .user-type-buttons {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .user-type-btn {
+            flex: 1;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            background: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        .user-type-btn:hover {
+            border-color: #e84949;
+            transform: translateY(-2px);
+        }
+
+        .user-type-btn.active {
+            border-color: #e84949;
+            background: #e84949;
+            color: white;
+        }
+
+        .user-type-btn i {
+            display: block;
+            font-size: 24px;
+            margin-bottom: 8px;
+        }
+
+        .login-form {
+            display: none;
+        }
+
+        .login-form.active {
+            display: block;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 500;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #e84949;
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 15px;
+            background: #e84949;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            margin-bottom: 15px;
+        }
+
+        .login-btn:hover {
+            background: #d13a3a;
+        }
+
+        .register-link {
+            color: #e84949;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .register-link:hover {
+            text-decoration: underline;
+        }
+
+        .error-message {
+            color: #e84949;
+            margin-top: 10px;
+            font-size: 14px;
+        }
+
+        .success-message {
+            color: #28a745;
+            margin-top: 10px;
+            font-size: 14px;
+        }
+
+        .guest-access {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .guest-btn {
+            background: transparent;
+            border: 2px solid #e84949;
+            color: #e84949;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .guest-btn:hover {
+            background: #e84949;
+            color: white;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="login-container">
+        <div class="logo">
+            <i class="fas fa-heartbeat"></i>
+        </div>
+        <h1>Medical Booking System</h1>
+        <p class="subtitle">Choose your role to continue</p>
+
+        <div class="user-type-buttons">
+            <button class="user-type-btn" onclick="selectUserType('patient')">
+                <i class="fas fa-user"></i>
+                Patient
+            </button>
+            <button class="user-type-btn" onclick="selectUserType('doctor')">
+                <i class="fas fa-user-md"></i>
+                Doctor
+            </button>
+        </div>
+
+        <!-- Patient Login Form -->
+        <form class="login-form" id="patientLoginForm">
+            <div class="form-group">
+                <label for="patientEmail">Email</label>
+                <input type="email" id="patientEmail" required>
+            </div>
+            <div class="form-group">
+                <label for="patientPassword">Password</label>
+                <input type="password" id="patientPassword" required>
+            </div>
+            <button type="submit" class="login-btn">Login as Patient</button>
+            <div id="patientMessage"></div>
+            <p>Don't have an account? <a href="Pregistration.html" class="register-link">Register here</a></p>
+        </form>
+
+        <!-- Doctor Login Form -->
+        <form class="login-form" id="doctorLoginForm">
+            <div class="form-group">
+                <label for="doctorEmail">Email</label>
+                <input type="email" id="doctorEmail" required>
+            </div>
+            <div class="form-group">
+                <label for="doctorPassword">Password</label>
+                <input type="password" id="doctorPassword" required>
+            </div>
+            <button type="submit" class="login-btn">Login as Doctor</button>
+            <div id="doctorMessage"></div>
+            <p>Don't have an account? <a href="Dregistration.html" class="register-link">Register here</a></p>
+        </form>
+
+        <div class="guest-access">
+            <p>Want to explore our services?</p>
+            <button class="guest-btn" onclick="window.location.href='index.html'">
+                Continue as Guest
+            </button>
+        </div>
+    </div>
+
+                 <script type="module">
+                 import { auth, database } from '../scripts/supabase-config.js';
+
+                 let selectedUserType = '';
+
+        function selectUserType(userType) {
+            selectedUserType = userType;
+            
+            // Update button styles
+            document.querySelectorAll('.user-type-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            // Show appropriate form
+            document.querySelectorAll('.login-form').forEach(form => {
+                form.classList.remove('active');
+            });
+            
+            if (userType === 'patient') {
+                document.getElementById('patientLoginForm').classList.add('active');
+            } else if (userType === 'doctor') {
+                document.getElementById('doctorLoginForm').classList.add('active');
+            }
+        }
+
+                         // Patient Login
+                 document.getElementById('patientLoginForm').addEventListener('submit', async function(e) {
+                     e.preventDefault();
+                     const email = document.getElementById('patientEmail').value;
+                     const password = document.getElementById('patientPassword').value;
+                     
+                     try {
+                         // Show loading state
+                         const submitBtn = this.querySelector('.login-btn');
+                         submitBtn.disabled = true;
+                         submitBtn.innerHTML = 'Logging in... <i class="fa-solid fa-spinner fa-spin"></i>';
+                         
+                         // Authenticate with Supabase
+                         const { data, error } = await auth.signIn(email, password);
+                         
+                         if (error) {
+                             throw new Error(error.message);
+                         }
+                         
+                         // Get patient profile
+                         const { data: patient, error: patientError } = await database.getPatientByUserId(data.user.id);
+                         
+                         if (patientError) {
+                             throw new Error('Patient profile not found');
+                         }
+                         
+                         // Store user session
+                         localStorage.setItem('currentUser', JSON.stringify({
+                             type: 'patient',
+                             data: patient,
+                             user: data.user
+                         }));
+                         
+                         window.location.href = 'patient-dashboard.html';
+                         
+                     } catch (error) {
+                         console.error('Login error:', error);
+                         document.getElementById('patientMessage').innerHTML = 
+                             `<div class="error-message">${error.message}</div>`;
+                         
+                         // Reset button state
+                         const submitBtn = this.querySelector('.login-btn');
+                         submitBtn.disabled = false;
+                         submitBtn.innerHTML = 'Login as Patient';
+                     }
+                 });
+
+                         // Doctor Login
+                 document.getElementById('doctorLoginForm').addEventListener('submit', async function(e) {
+                     e.preventDefault();
+                     const email = document.getElementById('doctorEmail').value;
+                     const password = document.getElementById('doctorPassword').value;
+                     
+                     try {
+                         // Show loading state
+                         const submitBtn = this.querySelector('.login-btn');
+                         submitBtn.disabled = true;
+                         submitBtn.innerHTML = 'Logging in... <i class="fa-solid fa-spinner fa-spin"></i>';
+                         
+                         // Authenticate with Supabase
+                         const { data, error } = await auth.signIn(email, password);
+                         
+                         if (error) {
+                             throw new Error(error.message);
+                         }
+                         
+                         // Get doctor profile
+                         const { data: doctor, error: doctorError } = await database.getDoctorByUserId(data.user.id);
+                         
+                         if (doctorError) {
+                             throw new Error('Doctor profile not found');
+                         }
+                         
+                         // Store user session
+                         localStorage.setItem('currentUser', JSON.stringify({
+                             type: 'doctor',
+                             data: doctor,
+                             user: data.user
+                         }));
+                         
+                         window.location.href = 'doctor-dashboard.html';
+                         
+                     } catch (error) {
+                         console.error('Login error:', error);
+                         document.getElementById('doctorMessage').innerHTML = 
+                             `<div class="error-message">${error.message}</div>`;
+                         
+                         // Reset button state
+                         const submitBtn = this.querySelector('.login-btn');
+                         submitBtn.disabled = false;
+                         submitBtn.innerHTML = 'Login as Doctor';
+                     }
+                 });
+
+        // Auto-select patient by default
+        window.addEventListener('load', function() {
+            selectUserType('patient');
+        });
+    </script>
+</body>
+</html>

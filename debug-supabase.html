@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supabase Debug</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .success {
+            background-color: #d4edda;
+            border: 1px solid #c3e6cb;
+            color: #155724;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+        .error {
+            background-color: #f8d7da;
+            border: 1px solid #f5c6cb;
+            color: #721c24;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+        .info {
+            background-color: #d1ecf1;
+            border: 1px solid #bee5eb;
+            color: #0c5460;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+        pre {
+            background-color: #f8f9fa;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+            font-size: 12px;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .loading {
+            color: #856404;
+            background-color: #fff3cd;
+            border: 1px solid #ffeaa7;
+            padding: 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Supabase Database Debug</h1>
+    
+    <div class="container">
+        <h2>Connection Test</h2>
+        <button onclick="testConnection()">Test Supabase Connection</button>
+        <div id="connectionStatus"></div>
+    </div>
+    
+    <div class="container">
+        <h2>Authentication Status</h2>
+        <button onclick="checkAuth()">Check Authentication</button>
+        <div id="authStatus"></div>
+    </div>
+    
+    <div class="container">
+        <h2>Database Tables</h2>
+        <button onclick="checkTables()">Check All Tables</button>
+        <div id="tablesStatus"></div>
+    </div>
+    
+    <div class="container">
+        <h2>Test Patient Creation</h2>
+        <button onclick="testPatientCreation()">Test Create Patient</button>
+        <div id="patientTestStatus"></div>
+    </div>
+    
+    <div class="container">
+        <h2>Local Storage</h2>
+        <button onclick="checkLocalStorage()">Check Local Storage</button>
+        <div id="localStorageStatus"></div>
+    </div>
+
+    <script type="module">
+        import { supabase, auth, database } from './src/scripts/supabase-config.js';
+        
+        window.testConnection = async function() {
+            const statusDiv = document.getElementById('connectionStatus');
+            statusDiv.innerHTML = '<div class="loading">Testing connection...</div>';
+            
+            try {
+                // Test basic connection
+                const { data, error } = await supabase.from('patients').select('count').limit(1);
+                
+                if (error) {
+                    statusDiv.innerHTML = `<div class="error">❌ Connection Error: ${error.message}</div>`;
+                } else {
+                    statusDiv.innerHTML = `<div class="success">✅ Supabase connection successful!</div>`;
+                }
+            } catch (err) {
+                statusDiv.innerHTML = `<div class="error">❌ Connection failed: ${err.message}</div>`;
+            }
+        };
+        
+        window.checkAuth = async function() {
+            const statusDiv = document.getElementById('authStatus');
+            statusDiv.innerHTML = '<div class="loading">Checking authentication...</div>';
+            
+            try {
+                const { data: { user }, error } = await supabase.auth.getUser();
+                
+                if (error) {
+                    statusDiv.innerHTML = `<div class="error">❌ Auth Error: ${error.message}</div>`;
+                } else if (user) {
+                    statusDiv.innerHTML = `
+                        <div class="success">
+                            ✅ User authenticated: ${user.email}
+                            <pre>User ID: ${user.id}</pre>
+                        </div>
+                    `;
+                } else {
+                    statusDiv.innerHTML = `<div class="info">ℹ️ No user currently authenticated</div>`;
+                }
+            } catch (err) {
+                statusDiv.innerHTML = `<div class="error">❌ Auth check failed: ${err.message}</div>`;
+            }
+        };
+        
+        window.checkTables = async function() {
+            const statusDiv = document.getElementById('tablesStatus');
+            statusDiv.innerHTML = '<div class="loading">Checking tables...</div>';
+            
+            try {
+                // Check patients table
+                const { data: patients, error: patientsError } = await supabase.from('patients').select('*').limit(5);
+                
+                // Check doctors table
+                const { data: doctors, error: doctorsError } = await supabase.from('doctors').select('*').limit(5);
+                
+                // Check appointments table
+                const { data: appointments, error: appointmentsError } = await supabase.from('appointments').select('*').limit(5);
+                
+                let result = '<div class="info">📊 Database Tables Status:</div>';
+                
+                if (patientsError) {
+                    result += `<div class="error">❌ Patients table error: ${patientsError.message}</div>`;
+                } else {
+                    result += `<div class="success">✅ Patients table accessible (${patients.length} records)</div>`;
+                }
+                
+                if (doctorsError) {
+                    result += `<div class="error">❌ Doctors table error: ${doctorsError.message}</div>`;
+                } else {
+                    result += `<div class="success">✅ Doctors table accessible (${doctors.length} records)</div>`;
+                }
+                
+                if (appointmentsError) {
+                    result += `<div class="error">❌ Appointments table error: ${appointmentsError.message}</div>`;
+                } else {
+                    result += `<div class="success">✅ Appointments table accessible (${appointments.length} records)</div>`;
+                }
+                
+                statusDiv.innerHTML = result;
+                
+            } catch (err) {
+                statusDiv.innerHTML = `<div class="error">❌ Table check failed: ${err.message}</div>`;
+            }
+        };
+        
+        window.testPatientCreation = async function() {
+            const statusDiv = document.getElementById('patientTestStatus');
+            statusDiv.innerHTML = '<div class="loading">Testing patient creation...</div>';
+            
+            try {
+                // First check if user is authenticated
+                const { data: { user }, error: authError } = await supabase.auth.getUser();
+                
+                if (authError || !user) {
+                    statusDiv.innerHTML = `<div class="error">❌ Please login first to test patient creation</div>`;
+                    return;
+                }
+                
+                // Test creating a patient record
+                const testPatientData = {
+                    user_id: user.id,
+                    name: 'Test Patient',
+                    phone: '1234567890',
+                    age: 25,
+                    sex: 'male',
+                    address: 'Test Address'
+                };
+                
+                const { data: patient, error: patientError } = await database.createPatient(testPatientData);
+                
+                if (patientError) {
+                    statusDiv.innerHTML = `<div class="error">❌ Patient creation failed: ${patientError.message}</div>`;
+                } else {
+                    statusDiv.innerHTML = `
+                        <div class="success">
+                            ✅ Test patient created successfully!
+                            <pre>${JSON.stringify(patient, null, 2)}</pre>
+                        </div>
+                    `;
+                }
+                
+            } catch (err) {
+                statusDiv.innerHTML = `<div class="error">❌ Test failed: ${err.message}</div>`;
+            }
+        };
+        
+        window.checkLocalStorage = function() {
+            const statusDiv = document.getElementById('localStorageStatus');
+            const currentUser = localStorage.getItem('currentUser');
+            
+            if (currentUser) {
+                try {
+                    const userData = JSON.parse(currentUser);
+                    statusDiv.innerHTML = `
+                        <div class="success">
+                            ✅ User data found in local storage:
+                            <pre>${JSON.stringify(userData, null, 2)}</pre>
+                        </div>
+                    `;
+                } catch (e) {
+                    statusDiv.innerHTML = `
+                        <div class="error">
+                            ❌ Error parsing local storage data: ${e.message}
+                        </div>
+                    `;
+                }
+            } else {
+                statusDiv.innerHTML = `
+                    <div class="info">
+                        ℹ️ No user data found in local storage
+                    </div>
+                `;
+            }
+        };
+        
+        // Auto-run connection test on page load
+        window.addEventListener('load', function() {
+            testConnection();
+        });
+    </script>
+</body>
+</html>

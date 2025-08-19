@@ -1,3 +1,5 @@
+import { supabase, auth, database } from './supabase-config.js';
+
 let tablinks = document.getElementsByClassName('tab-links');
 let tabcontents = document.getElementsByClassName('tab-contents');
 
