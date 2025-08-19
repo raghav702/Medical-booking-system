@@ -1,10 +1,12 @@
-// Supabase Configuration
+// Supabase Configuration Template
+// Copy this file to supabase-config.js and replace the placeholder values with your actual credentials
+
 import { createClient } from '@supabase/supabase-js'
 
 // Replace these with your actual Supabase credentials
 // You'll get these from your Supabase project dashboard
-const supabaseUrl = 'https://ikpgrdgxzohuwnnneigw.supabase.co'
-const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImlrcGdyZGd4em9odXdubm5laWd3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTU1OTU4NDksImV4cCI6MjA3MTE3MTg0OX0.dIQSUteLZ2SI4JNlIbidgOHR_1qrKtQWTPRn4dSFLEw'
+const supabaseUrl = 'YOUR_SUPABASE_URL_HERE'
+const supabaseAnonKey = 'YOUR_SUPABASE_ANON_KEY_HERE'
 
 export const supabase = createClient(supabaseUrl, supabaseAnonKey)
 

@@ -49,9 +49,11 @@ A modern, full-stack medical appointment booking system built with HTML, CSS, Ja
    - Create a new project
    - Note your Project URL and Anon Key
 
-2. **Update Configuration**
-   - Open `src/scripts/supabase-config.js`
-   - Replace `YOUR_SUPABASE_URL` and `YOUR_SUPABASE_ANON_KEY` with your actual values
+2. **Set Up Configuration (IMPORTANT: Security)**
+   - Copy `src/scripts/supabase-config.template.js` to `src/scripts/supabase-config.js`
+   - Replace `YOUR_SUPABASE_URL_HERE` and `YOUR_SUPABASE_ANON_KEY_HERE` with your actual values
+   - **⚠️ NEVER commit your actual credentials to Git!**
+   - The `supabase-config.js` file is already added to `.gitignore` to prevent accidental commits
 
 3. **Create Database Tables**
    - In Supabase dashboard, go to SQL Editor

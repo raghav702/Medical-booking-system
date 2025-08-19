@@ -77,3 +77,6 @@ logs
 # Build outputs
 dist/
 build/
+
+# Supabase configuration (contains sensitive credentials)
+src/scripts/supabase-config.js
