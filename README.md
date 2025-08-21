@@ -1,15 +1,17 @@
 # Medical Booking System
 
-A modern, full-stack medical appointment booking system built with HTML, CSS, JavaScript, and Supabase.
+A modern, full-stack medical appointment booking system built with HTML, CSS, JavaScript, and Supabase. This system allows patients to book appointments with different medical specialists and provides comprehensive dashboards for both patients and doctors.
 
 ## Features
 
 - **User Authentication**: Secure login/registration for patients and doctors
 - **Role-based Access**: Separate dashboards for patients and doctors
+- **Specialty Booking**: Book appointments with different medical specialists (Cardiology, Neurology, Orthopedics, etc.)
 - **Real-time Updates**: Live appointment updates using Supabase real-time
 - **Appointment Management**: Book, view, and manage appointments
 - **Responsive Design**: Works on desktop, tablet, and mobile devices
 - **SQL Database**: PostgreSQL database with Row Level Security (RLS)
+- **Admin Panel**: Administrative interface for system management
 
 ## Tech Stack
 
@@ -17,6 +19,7 @@ A modern, full-stack medical appointment booking system built with HTML, CSS, Ja
 - **Backend**: Supabase (PostgreSQL + Authentication + Real-time)
 - **Database**: PostgreSQL with Row Level Security
 - **Authentication**: Supabase Auth with JWT tokens
+- **Dependencies**: @supabase/supabase-js v2.55.0
 
 ## Quick Start
 
@@ -94,9 +97,22 @@ Mini_project/
 │   │   ├── Dregistration.html      # Doctor registration
 │   │   ├── patient-dashboard.html  # Patient dashboard
 │   │   ├── doctor-dashboard.html   # Doctor dashboard
-│   │   └── admin.html              # Admin panel
+│   │   ├── admin.html              # Admin panel
+│   │   ├── Alternate.html          # Alternative booking page
+│   │   ├── run.html                # Booking runner page
+│   │   ├── cardio.html             # Cardiology specialist page
+│   │   ├── neuro.html              # Neurology specialist page
+│   │   ├── Orthopedic.html         # Orthopedics specialist page
+│   │   ├── Ophthalmologist.html    # Ophthalmology specialist page
+│   │   ├── pulmonologist.html      # Pulmonology specialist page
+│   │   ├── Urologist.html          # Urology specialist page
+│   │   ├── Gastroenterologist.html # Gastroenterology specialist page
+│   │   ├── ENT.html                # ENT specialist page
+│   │   ├── General.html            # General medicine specialist page
+│   │   └── dermatologist.html      # Dermatology specialist page
 │   ├── scripts/
-│   │   ├── supabase-config.js      # Supabase configuration
+│   │   ├── supabase-config.js      # Supabase configuration (configured)
+│   │   ├── supabase-config.template.js # Template for configuration
 │   │   └── script.js               # Main JavaScript
 │   └── styles/
 │       └── style.css               # Main stylesheet
@@ -105,6 +121,11 @@ Mini_project/
 ├── database-schema.sql             # Database schema
 ├── SUPABASE_SETUP.md              # Detailed setup guide
 ├── package.json                   # Dependencies
+├── package-lock.json              # Lock file
+├── .gitignore                     # Git ignore rules
+├── debug-supabase.html            # Debug page for Supabase testing
+├── check-registration.html        # Registration testing page
+├── test.html                      # General testing page
 └── README.md                      # This file
 ```
 
@@ -115,6 +136,12 @@ Mini_project/
 - **Doctor Registration**: Creates user account + doctor profile
 - **Secure Login**: JWT-based authentication with Supabase
 - **Session Management**: Automatic session handling
+
+### Specialty Booking System
+- **Multiple Specialties**: Cardiology, Neurology, Orthopedics, Ophthalmology, Pulmonology, Urology, Gastroenterology, ENT, General Medicine, Dermatology
+- **Specialist Pages**: Dedicated pages for each medical specialty
+- **Flexible Booking**: Patients can choose from available specialists
+- **Alternate Booking**: Alternative booking flow for different scenarios
 
 ### Dashboard Features
 
@@ -129,6 +156,11 @@ Mini_project/
 - Manage pending appointments
 - Patient history and details
 - Appointment status management
+
+#### Admin Panel
+- System-wide management capabilities
+- User and appointment oversight
+- Administrative functions
 
 ### Database Design
 - **Patients Table**: Stores patient information linked to auth users
@@ -149,6 +181,13 @@ Mini_project/
 - **Live Updates**: Appointments update in real-time across all users
 - **Instant Notifications**: Changes appear immediately without page refresh
 - **Multi-user Support**: Multiple users can use the system simultaneously
+
+## Testing and Debugging
+
+The project includes several testing and debugging pages:
+- `debug-supabase.html`: For testing Supabase connections and functionality
+- `check-registration.html`: For testing registration processes
+- `test.html`: General testing utilities
 
 ## Deployment
 
@@ -193,13 +232,14 @@ Mini_project/
 2. Review Supabase dashboard logs
 3. Verify all setup steps were completed
 4. Check the `SUPABASE_SETUP.md` for detailed instructions
+5. Use the debug pages for testing specific functionality
 
 ## Contributing
 
 1. Fork the repository
 2. Create a feature branch
 3. Make your changes
-4. Test thoroughly
+4. Test thoroughly using the provided debug pages
 5. Submit a pull request
 
 ## License
@@ -213,3 +253,4 @@ For support and questions:
 - Review the setup guide in `SUPABASE_SETUP.md`
 - Check browser console for error messages
 - Verify all configuration steps were completed
+- Use the debug pages for testing specific functionality
